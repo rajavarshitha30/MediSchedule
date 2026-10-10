@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediSchedule AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js"></script>
+    
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            🩺 MediSchedule <span>AI</span>
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#patients">Patients</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#appointments">Appointments</a>
+            <a href="#ai">AI Assistant</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section id="dashboard" class="hero">
+
+            <div class="hero-text">
+
+                <p class="tag">AI-POWERED HEALTHCARE</p>
+
+                <h1>
+                    Smarter Healthcare.
+                    <br>
+                    <span>Better Scheduling.</span>
+                </h1>
+
+                <p>
+                    MediSchedule AI helps patients find doctors,
+                    book appointments, reschedule visits and manage
+                    their healthcare appointments easily.
+                </p>
+
+                <button onclick="showSection('appointments')">
+                    📅 Book Appointment
+                </button>
+
+                <button class="secondary"
+                        onclick="showSection('ai')">
+                    🤖 Ask AI Assistant
+                </button>
+
+            </div>
+
+            <div class="hero-card">
+
+                <div class="card-icon">
+                    🤖
+                </div>
+
+                <h2>AI Scheduling Assistant</h2>
+
+                <p>
+                    Your intelligent assistant for
+                    hassle-free appointment scheduling.
+                </p>
+
+                <div class="status">
+                    <span></span>
+                    System Online
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <h2 id="patientCount">0</h2>
+                <p>Registered Patients</p>
+            </div>
+
+            <div class="stat-card">
+                <h2 id="doctorCount">0</h2>
+                <p>Available Doctors</p>
+            </div>
+
+            <div class="stat-card">
+                <h2 id="appointmentCount">0</h2>
+                <p>Appointments</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>AI</h2>
+                <p>Smart Assistant</p>
+            </div>
+
+        </section>
+
+
+        <!-- PATIENT -->
+
+        <section id="patients" class="section">
+
+            <h2>👤 Patient Registration</h2>
+
+            <div class="form-card">
+
+                <input
+                    id="patientName"
+                    type="text"
+                    placeholder="Full Name"
+                >
+
+                <input
+                    id="patientAge"
+                    type="number"
+                    placeholder="Age"
+                >
+
+                <input
+                    id="patientPhone"
+                    type="text"
+                    placeholder="Phone Number"
+                >
+
+                <input
+                    id="patientEmail"
+                    type="email"
+                    placeholder="Email"
+                >
+
+                <button onclick="registerPatient()">
+                    Register Patient
+                </button>
+
+            </div>
+
+            <p id="patientMessage"></p>
+
+        </section>
+
+
+        <!-- DOCTORS -->
+
+        <section id="doctors" class="section">
+
+            <h2>👨‍⚕️ Doctor Management</h2>
+
+            <div class="form-card">
+
+                <input
+                    id="doctorName"
+                    type="text"
+                    placeholder="Doctor Name"
+                >
+
+                <input
+                    id="specialization"
+                    type="text"
+                    placeholder="Specialization"
+                >
+
+                <input
+                    id="availableDays"
+                    type="text"
+                    placeholder="Available Days"
+                >
+
+                <input
+                    id="availableTime"
+                    type="text"
+                    placeholder="Available Time"
+                >
+
+                <button onclick="addDoctor()">
+                    Add Doctor
+                </button>
+
+            </div>
+
+            <p id="doctorMessage"></p>
+
+        </section>
+
+
+        <!-- APPOINTMENTS -->
+
+        <section id="appointments" class="section">
+
+            <h2>📅 Book Appointment</h2>
+
+            <div class="form-card">
+
+                <input
+                    id="appointmentPatient"
+                    type="number"
+                    placeholder="Patient ID"
+                >
+
+                <input
+                    id="appointmentDoctor"
+                    type="number"
+                    placeholder="Doctor ID"
+                >
+
+                <input
+                    id="appointmentDate"
+                    type="date"
+                >
+
+                <input
+                    id="appointmentTime"
+                    type="time"
+                >
+
+                <input
+                    id="appointmentReason"
+                    type="text"
+                    placeholder="Reason for visit"
+                >
+
+                <button onclick="bookAppointment()">
+                    Book Appointment
+                </button>
+
+            </div>
+
+            <p id="appointmentMessage"></p>
+
+            <div class="appointments-list">
+
+                <h3>Current Appointments</h3>
+
+                <button onclick="loadAppointments()">
+                    Refresh Appointments
+                </button>
+
+                <div id="appointmentsData"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI ASSISTANT -->
+
+<!-- AI ASSISTANT -->
+<section id="ai" class="section ai-section">
+
+    <h2>🤖 MediSchedule AI Assistant</h2>
+
+    <p>
+        Chat with the assistant or start a voice conversation
+        to manage your appointments.
+    </p>
+
+    <!-- Voice Assistant -->
+    <div class="form-card voice-card">
+        <h3>🎙️ Voice Scheduling Assistant</h3>
+
+        <p id="voiceStatus" role="status" aria-live="polite">
+            Not connected
+        </p>
+
+        <button id="startCallButton" onclick="startVoiceCall()">
+            🎙️ Start Call
+        </button>
+
+        <button id="endCallButton"
+                class="secondary"
+                onclick="endVoiceCall()"
+                disabled>
+            🛑 End Call
+        </button>
+
+        <p id="voiceMessage">
+            Click Start Call and allow microphone access when prompted.
+        </p>
+
+        <audio id="remoteAudio" autoplay controls></audio>
+    </div>
+
+    <!-- Text Chat -->
+    <div class="chat-box">
+
+        <div id="chatMessages" class="chat-messages">
+            <div class="ai-message">
+                Hello! 👋 I'm MediSchedule AI.
+                How can I help you with your appointment?
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input
+                id="aiMessage"
+                type="text"
+                placeholder="Ask about appointments..."
+            >
+
+            <button onclick="askAI()">Send</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 MediSchedule AI
+        </p>
+
+        <p>
+            AI-powered patient scheduling platform
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

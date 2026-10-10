@@ -1,0 +1,22 @@
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local databases and persistent data
+*.db
+*.sqlite
+*.sqlite3
+qdrant_memory/
+qdrant_data/
+
+# Development files
+.vscode/
+.DS_Store
