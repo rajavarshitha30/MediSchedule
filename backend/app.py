@@ -31,6 +31,15 @@ app = FastAPI(
     title="MediSchedule AI Backend",
     version="1.0.0"
 )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://medischedule2.onrender.com",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.get("/")
 def home():
     return {
