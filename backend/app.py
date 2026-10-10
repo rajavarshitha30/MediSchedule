@@ -21,6 +21,7 @@ from fastembed import TextEmbedding
 from typing import Any
 from pathlib import Path
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
