@@ -544,7 +544,7 @@ window.addEventListener("load", () => {
 
     loadAppointments();
 
-});ch
+});
 
 /* =========================================
    MEDISCHEDULE AI - LIVE VOICE ASSISTANT
