@@ -1,6 +1,11 @@
 
 const API_URL = "https://medischedule-26s2.onrender.com";
 
+// Voice assistant state
+var voiceRoom = null;
+var activeRoomName = null;
+var voiceConnecting = false;
+
 // =========================
 // NAVIGATION
 // =========================
@@ -546,9 +551,6 @@ window.addEventListener("load", () => {
    ========================================= */
 
 // Initialize voice state BEFORE any voice functions use it.
-let voiceRoom = null;
-let activeRoomName = null;
-let voiceConnecting = false;
 
 function setVoiceStatus(status, message) {
     const statusElement = document.getElementById("voiceStatus");
