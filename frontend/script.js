@@ -545,6 +545,10 @@ window.addEventListener("load", () => {
    MEDISCHEDULE AI - LIVE VOICE ASSISTANT
    ========================================= */
 
+// Initialize voice state BEFORE any voice functions use it.
+let voiceRoom = null;
+let activeRoomName = null;
+let voiceConnecting = false;
 
 function setVoiceStatus(status, message) {
     const statusElement = document.getElementById("voiceStatus");
@@ -563,9 +567,7 @@ function setVoiceStatus(status, message) {
         endButton.disabled = !voiceRoom && !voiceConnecting;
     }
 }
-let voiceRoom = null;
-let activeRoomName = null;
-let voiceConnecting = false;
+
 
 
 async function startVoiceCall() {
