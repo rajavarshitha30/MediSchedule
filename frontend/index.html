@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MediSchedule AI</title>
-    <script src="/static/script.js" defer></script>
+
     
-    <link rel="stylesheet" href="/static/style.css">
-    <script src="/static/script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="/static/script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    
 </head>
 
 <body>
@@ -24,6 +25,7 @@
             <a href="#patients">Patients</a>
             <a href="#doctors">Doctors</a>
             <a href="#appointments">Appointments</a>
+            <a href="#ai">AI Assistant</a>
         </nav>
     </header>
 
@@ -52,6 +54,11 @@
 
                 <button onclick="showSection('appointments')">
                     📅 Book Appointment
+                </button>
+
+                <button class="secondary"
+                        onclick="showSection('ai')">
+                    🤖 Ask AI Assistant
                 </button>
 
             </div>
@@ -259,7 +266,8 @@
     <h2>🤖 MediSchedule AI Assistant</h2>
 
     <p>
-        Start a voice conversation to manage your appointments.
+        Chat with the assistant or start a voice conversation
+        to manage your appointments.
     </p>
 
     <!-- Voice Assistant -->
@@ -287,8 +295,13 @@
 
         <audio id="remoteAudio" autoplay controls></audio>
     </div>
-</div>
 
+    <!-- Text Chat -->
+    <div class="chat-box">
+
+       
+
+        
 
     </div>
 
@@ -312,6 +325,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/livekit-client/dist/livekit-client.umd.min.js"></script>
+<script src="./script.js"></script>
 
 </body>
 </html>
